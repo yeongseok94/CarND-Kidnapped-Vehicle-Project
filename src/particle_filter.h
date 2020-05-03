@@ -60,8 +60,6 @@ class ParticleFilter {
   /**
    * dataAssociation Finds which observations correspond to which landmarks 
    *   (likely by using a nearest-neighbors data association).
-   * @param predicted Vector of predicted landmark observations
-   * @param observations Vector of landmark observations
    */
   void dataAssociation(std::vector<LandmarkObs> predicted, 
                        std::vector<LandmarkObs>& observations);
@@ -76,8 +74,8 @@ class ParticleFilter {
    * @param map Map class containing map landmarks
    */
   void updateWeights(double sensor_range, double std_landmark[], 
-                     const std::vector<LandmarkObs> &observations,
-                     const Map &map_landmarks);
+                     std::vector<LandmarkObs> observations,
+                     Map map_landmarks);
   
   /**
    * resample Resamples from the updated set of particles to form
