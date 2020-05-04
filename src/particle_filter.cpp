@@ -26,7 +26,7 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
    * NOTE: Consult particle_filter.h for more information about this method 
    *   (and others in this file).
    */
-  num_particles = 1000;  // TODO: Set the number of particles
+  num_particles = 100;  // TODO: Set the number of particles
 
   std::default_random_engine gen;
   normal_distribution<double> dist_x(x, std[0]);
@@ -159,15 +159,15 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     ParticleFilter::dataAssociation(predictions, observations_transformed);
 
     // store transformed observations and its associations into particle object
-    vector<int> associations;
-    vector<double> sense_x;
-    vector<double> sense_y;
-    for (int j=0; j<obs_size; j++) {
-      associations.push_back(observations_transformed[j].id);
-      sense_x.push_back(observations_transformed[j].x);
-      sense_y.push_back(observations_transformed[j].y);
-    }
-    ParticleFilter::SetAssociations(particles[i], associations, sense_x, sense_y);
+    // vector<int> associations;
+    // vector<double> sense_x;
+    // vector<double> sense_y;
+    // for (int j=0; j<obs_size; j++) {
+    //   associations.push_back(observations_transformed[j].id);
+    //   sense_x.push_back(observations_transformed[j].x);
+    //   sense_y.push_back(observations_transformed[j].y);
+    // }
+    // ParticleFilter::SetAssociations(particles[i], associations, sense_x, sense_y);
 
     // re-initalize weights
     particles[i].weight = 1.0;
